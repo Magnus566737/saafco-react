@@ -482,7 +482,10 @@ const App = () => {
           textAlign: "center",
         }}
       >
-        <span>© {new Date().getFullYear()} SaafCo · Future consumables brand concept for Karachi.</span>
+        <span>
+          © {new Date().getFullYear()} SaafCo · Future consumables brand
+          concept for Karachi.
+        </span>
       </footer>
     </div>
   );
