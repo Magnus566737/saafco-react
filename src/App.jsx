@@ -65,7 +65,7 @@ const badgeStyle = {
   textTransform: "uppercase",
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <div style={pageStyle}>
       {/* Header */}
