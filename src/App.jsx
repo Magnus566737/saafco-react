@@ -13,7 +13,7 @@ export default function App() {
   };
 
   return (
-    <div className="app dark-bg">
+    <div className="app">
       {/* NAV BAR */}
       <nav className="navbar">
         <div className="logo">SafaayiCo</div>
@@ -41,34 +41,69 @@ export default function App() {
 
       {/* HOME */}
       {page === "home" && (
-        <section className="hero">
-          <div className="hero-text">
-            <h1>
-              Daily-use consumables, <span>zero health risk</span>.
-            </h1>
-            <p>
-              SafaayiCo provides safe, repeat-purchase household and office
-              essentials in Karachi. No food, no skincare, no chemicals — only
-              simple, dependable products.
-            </p>
+        <>
+          <section className="hero">
+            <div className="hero-text">
+              <div className="pill">Future consumables brand · Karachi</div>
 
-            <a className="btn btn-whatsapp" href={WA_LINK} target="_blank">
-              Order on WhatsApp
-            </a>
+              <h1>
+                Daily-use consumables, <span>zero health risk.</span>
+              </h1>
 
-            <div className="founder">
-              <strong>Founder & CEO:</strong> Umar<br />
-              Karachi · 📞 {WHATSAPP_NUMBER}
+              <p>
+                SafaayiCo is a future brand focused on safe, repeat-purchase
+                essentials for homes and offices in Karachi. No food, no
+                skincare, no chemicals — only simple products that are easy to
+                store, ship and repeat every month.
+              </p>
+
+              <a className="btn btn-whatsapp" href={WA_LINK} target="_blank">
+                Order on WhatsApp
+              </a>
+
+              <div className="founder">
+                <strong>Founder &amp; CEO:</strong> Umar · Karachi · 📞{" "}
+                {WHATSAPP_NUMBER}
+              </div>
             </div>
-          </div>
 
-          <div className="hero-image float-card">
-            <img
-              src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg"
-              alt="Household essentials"
-            />
-          </div>
-        </section>
+            <div className="hero-image float-card">
+              <img
+                src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg"
+                alt="Household essentials"
+              />
+            </div>
+          </section>
+
+          {/* Interesting extra section */}
+          <section className="home-extra">
+            <h2>Why SafaayiCo is different</h2>
+            <div className="home-grid">
+              <div className="home-card">
+                <h3>Locked, low-risk scope</h3>
+                <p>
+                  Only non-health, non-food items: tissues, garbage bags,
+                  zip-lock bags and basic stationery. No creams, oils or
+                  chemicals.
+                </p>
+              </div>
+              <div className="home-card">
+                <h3>Built for repeat orders</h3>
+                <p>
+                  Every SKU is something people finish and re-order:
+                  month-after-month usage for homes, cafés and offices.
+                </p>
+              </div>
+              <div className="home-card">
+                <h3>Calm operations</h3>
+                <p>
+                  Simple storage, no expiry panic, no temperature control.
+                  Designed so the business can run calmly in the background.
+                </p>
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* PRODUCTS */}
@@ -103,7 +138,8 @@ export default function App() {
               />
               <h3>Heavy-Duty Garbage Bags</h3>
               <p>
-                Leak-resistant rolls for kitchens, homes and restaurants.
+                Leak-resistant rolls for kitchens, homes and restaurants. Easy
+                to stack and ship.
               </p>
               <small>Target price: Rs 250–450 / roll</small>
             </div>
@@ -116,7 +152,8 @@ export default function App() {
               />
               <h3>Zip-Lock Storage Bags</h3>
               <p>
-                Resealable food-safe storage for snacks, spices and supplies.
+                Resealable food-safe storage for snacks, spices and small
+                supplies. Great for bundles.
               </p>
               <small>Target price: Rs 250–300 / pack</small>
             </div>
@@ -129,8 +166,8 @@ export default function App() {
         <section className="contact">
           <h2>Contact SafaayiCo</h2>
           <p>
-            For wholesale, office supply or household orders, contact directly
-            on WhatsApp.
+            For wholesale, office supply or household orders, you can contact
+            the founder directly.
           </p>
 
           <a className="btn btn-whatsapp" href={WA_LINK} target="_blank">
