@@ -1,501 +1,638 @@
 import React from "react";
 
-const pageStyle = {
+const page = {
   fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-  color: "#0f172a",
-  backgroundColor: "#f3f4f6",
+  backgroundColor: "#0f172a",
+  minHeight: "100vh",
   margin: 0,
-  padding: 0,
 };
 
-const sectionStyle = {
-  maxWidth: "960px",
+const shell = {
+  maxWidth: "1040px",
   margin: "0 auto",
-  padding: "32px 16px",
+  padding: "24px 16px 40px",
 };
 
-const cardStyle = {
-  backgroundColor: "#ffffff",
-  borderRadius: "12px",
-  padding: "20px",
-  boxShadow: "0 10px 30px rgba(15,23,42,0.08)",
+const navBar = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: "32px",
 };
 
-const pillStyle = {
-  display: "inline-block",
-  padding: "4px 10px",
-  borderRadius: "999px",
-  fontSize: "12px",
-  fontWeight: 500,
-  background: "rgba(37,99,235,0.08)",
-  color: "#1d4ed8",
+const brandBlock = {
+  display: "flex",
+  alignItems: "center",
+  gap: 10,
 };
 
-const buttonPrimary = {
-  padding: "10px 20px",
-  borderRadius: "999px",
-  border: "none",
-  cursor: "pointer",
-  background: "linear-gradient(135deg,#1d4ed8,#22c55e)",
+const brandIcon = {
+  width: 36,
+  height: 36,
+  borderRadius: 12,
+  background: "linear-gradient(135deg,#22c55e,#16a3ff)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   color: "#ffffff",
-  fontWeight: 600,
-  fontSize: "14px",
+  fontWeight: 800,
+  fontSize: 20,
 };
 
-const buttonSecondary = {
-  padding: "10px 20px",
-  borderRadius: "999px",
-  border: "1px solid #cbd5f5",
-  cursor: "pointer",
-  background: "#ffffff",
-  color: "#1e293b",
-  fontWeight: 500,
-  fontSize: "14px",
+const navLinks = {
+  display: "flex",
+  gap: 20,
+  fontSize: 14,
+  color: "#cbd5f5",
 };
 
-const badgeStyle = {
+const heroSection = {
+  display: "grid",
+  gridTemplateColumns: "minmax(0,1.2fr) minmax(0,1fr)",
+  gap: 32,
+  alignItems: "center",
+  marginBottom: 40,
+};
+
+const heroBadge = {
   display: "inline-block",
   padding: "4px 10px",
-  borderRadius: "999px",
-  backgroundColor: "#e0f2fe",
-  color: "#0369a1",
-  fontSize: "11px",
-  fontWeight: 600,
-  letterSpacing: "0.04em",
+  borderRadius: 999,
+  backgroundColor: "rgba(148,163,184,0.15)",
+  color: "#e5e7eb",
+  fontSize: 11,
+  letterSpacing: "0.09em",
   textTransform: "uppercase",
+  fontWeight: 600,
+};
+
+const heroTitle = {
+  fontSize: 36,
+  lineHeight: 1.1,
+  color: "#f9fafb",
+  margin: "14px 0 10px",
+};
+
+const heroText = {
+  fontSize: 15,
+  color: "#cbd5f5",
+  maxWidth: 520,
+  lineHeight: 1.6,
+  marginBottom: 18,
+};
+
+const heroSub = {
+  fontSize: 13,
+  color: "#9ca3af",
+  marginBottom: 18,
+};
+
+const heroButtons = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 12,
+  marginBottom: 14,
+};
+
+const primaryBtn = {
+  padding: "10px 18px",
+  borderRadius: 999,
+  border: "none",
+  fontSize: 14,
+  fontWeight: 600,
+  cursor: "pointer",
+  background: "linear-gradient(135deg,#22c55e,#16a3ff)",
+  color: "#0b1120",
+};
+
+const secondaryBtn = {
+  padding: "10px 18px",
+  borderRadius: 999,
+  border: "1px solid rgba(148,163,184,0.6)",
+  fontSize: 14,
+  fontWeight: 500,
+  cursor: "pointer",
+  background: "transparent",
+  color: "#e5e7eb",
+};
+
+const heroMeta = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 12,
+  fontSize: 12,
+  color: "#9ca3af",
+};
+
+const heroCard = {
+  background:
+    "radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 55%), radial-gradient(circle at bottom right, rgba(74,222,128,0.2), #020617)",
+  borderRadius: 18,
+  padding: 20,
+  border: "1px solid rgba(148,163,184,0.25)",
+  color: "#e5e7eb",
+};
+
+const chip = {
+  display: "inline-block",
+  padding: "4px 10px",
+  borderRadius: 999,
+  background: "rgba(15,23,42,0.6)",
+  fontSize: 11,
+  textTransform: "uppercase",
+  letterSpacing: "0.08em",
+};
+
+const productSection = {
+  marginTop: 12,
+};
+
+const sectionTitleRow = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: 12,
+};
+
+const sectionTitle = {
+  fontSize: 20,
+  color: "#f9fafb",
+};
+
+const sectionSub = {
+  fontSize: 13,
+  color: "#9ca3af",
+  marginBottom: 16,
+};
+
+const productGrid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+  gap: 18,
+};
+
+const card = {
+  backgroundColor: "#020617",
+  borderRadius: 14,
+  padding: 16,
+  border: "1px solid rgba(148,163,184,0.55)",
+};
+
+const cardBadgeRow = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: 8,
+};
+
+const tagBadge = {
+  padding: "4px 9px",
+  borderRadius: 999,
+  backgroundColor: "rgba(37,99,235,0.15)",
+  color: "#bfdbfe",
+  fontSize: 11,
+  textTransform: "uppercase",
+  letterSpacing: "0.08em",
+};
+
+const labelBadge = {
+  padding: "4px 9px",
+  borderRadius: 999,
+  backgroundColor: "rgba(34,197,94,0.18)",
+  color: "#bbf7d0",
+  fontSize: 11,
+};
+
+const cardTitle = {
+  fontSize: 16,
+  color: "#e5e7eb",
+  marginBottom: 4,
+};
+
+const cardText = {
+  fontSize: 13,
+  color: "#9ca3af",
+  marginBottom: 8,
+};
+
+const priceRow = {
+  display: "flex",
+  gap: 8,
+  alignItems: "baseline",
+  marginBottom: 10,
+};
+
+const price = {
+  fontSize: 15,
+  fontWeight: 600,
+  color: "#f9fafb",
+};
+
+const oldPrice = {
+  fontSize: 13,
+  color: "#64748b",
+  textDecoration: "line-through",
+};
+
+const tagRow = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 6,
+  fontSize: 11,
+  color: "#6b7280",
+  marginBottom: 10,
+};
+
+const pill = {
+  padding: "3px 8px",
+  borderRadius: 999,
+  border: "1px solid rgba(75,85,99,0.6)",
+};
+
+const cardButtons = {
+  display: "flex",
+  gap: 8,
+};
+
+const smallPrimary = {
+  ...primaryBtn,
+  padding: "8px 12px",
+  fontSize: 12,
+};
+
+const smallGhost = {
+  ...secondaryBtn,
+  padding: "8px 12px",
+  fontSize: 12,
+  borderColor: "rgba(55,65,81,0.9)",
+};
+
+const infoStrip = {
+  fontSize: 12,
+  color: "#9ca3af",
+  marginTop: 18,
+};
+
+const footer = {
+  marginTop: 32,
+  borderTop: "1px solid rgba(30,64,175,0.4)",
+  paddingTop: 16,
+  fontSize: 12,
+  color: "#6b7280",
+  display: "flex",
+  justifyContent: "space-between",
+  flexWrap: "wrap",
+  gap: 10,
 };
 
 const App = () => {
+  const handleWhatsApp = () => {
+    window.location.href = "https://wa.me/923001234567"; // TODO: replace with real number
+  };
+
+  const scrollToProducts = () => {
+    const el = document.getElementById("products");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div style={pageStyle}>
-      {/* Header */}
-      <header
-        style={{
-          backgroundColor: "#ffffff",
-          borderBottom: "1px solid #e5e7eb",
-          position: "sticky",
-          top: 0,
-          zIndex: 10,
-        }}
-      >
-        <div
-          style={{
-            ...sectionStyle,
-            paddingTop: 16,
-            paddingBottom: 16,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 12,
-                background:
-                  "linear-gradient(135deg, #1d4ed8 0%, #22c55e 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#ffffff",
-                fontWeight: 800,
-                fontSize: 20,
-              }}
-            >
-              S
-            </div>
+    <div style={page}>
+      <div style={shell}>
+        {/* NAV */}
+        <header style={navBar}>
+          <div style={brandBlock}>
+            <div style={brandIcon}>S</div>
             <div>
               <div
                 style={{
+                  color: "#f9fafb",
                   fontWeight: 700,
                   fontSize: 18,
                   letterSpacing: "0.02em",
                 }}
               >
-                SaafCo
+                SafaayiCo
               </div>
-              <div style={{ fontSize: 12, color: "#6b7280" }}>
-                Essentials Made Simple
+              <div style={{ color: "#9ca3af", fontSize: 12 }}>
+                Everyday Essentials, Made Simple
               </div>
             </div>
           </div>
 
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-              fontSize: 14,
-              color: "#4b5563",
-            }}
-          >
-            <a href="#products" style={{ textDecoration: "none", color: "inherit" }}>
+          <nav style={navLinks}>
+            <a
+              href="#top"
+              style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
+            >
+              Home
+            </a>
+            <a
+              href="#products"
+              style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
+            >
               Products
             </a>
-            <a href="#why" style={{ textDecoration: "none", color: "inherit" }}>
-              Why SaafCo
-            </a>
-            <a href="#how" style={{ textDecoration: "none", color: "inherit" }}>
-              How It Works
-            </a>
-            <a href="#contact" style={{ textDecoration: "none", color: "inherit" }}>
+            <button
+              onClick={scrollToContact}
+              style={{
+                color: "#cbd5f5",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            >
               Contact
-            </a>
+            </button>
           </nav>
-        </div>
-      </header>
+        </header>
 
-      {/* Hero */}
-      <main>
-        <section style={{ ...sectionStyle, paddingTop: 40 }}>
-          <div
-            style={{
-              display: "grid",
-              gap: 32,
-              gridTemplateColumns: "minmax(0,1.3fr) minmax(0,1fr)",
-            }}
-          >
+        {/* HERO */}
+        <main id="top">
+          <section style={heroSection}>
             <div>
-              <span style={pillStyle}>Karachi · Home & Office Essentials</span>
-              <h1
-                style={{
-                  marginTop: 16,
-                  fontSize: 36,
-                  lineHeight: 1.1,
-                  marginBottom: 8,
-                }}
-              >
-                Daily-use consumables,{" "}
-                <span style={{ color: "#1d4ed8" }}>zero health risk</span>.
+              <div style={heroBadge}>Karachi · Home & Office Essentials</div>
+              <h1 style={heroTitle}>
+                Stock up on{" "}
+                <span style={{ color: "#38bdf8" }}>clean, safe consumables</span>{" "}
+                with zero health risk.
               </h1>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#4b5563",
-                  maxWidth: 520,
-                  lineHeight: 1.6,
-                  marginBottom: 16,
-                }}
-              >
-                SaafCo provides simple, safe, repeat-purchase products for homes,
-                offices and small businesses in Karachi. No creams, no food, no
-                chemicals – only trusted paper, hygiene and storage essentials.
+              <p style={heroText}>
+                SafaayiCo curates simple, non-risk daily-use products: tissues,
+                garbage bags, zip-lock bags and cleaning supplies. Built for
+                homes, offices and small businesses in Karachi that want
+                reliable monthly restocking.
+              </p>
+              <p style={heroSub}>
+                No creams, no food, no chemicals. Only paper, hygiene and
+                storage essentials that are easy to store and ship.
               </p>
 
-              <p
-                style={{
-                  fontSize: 13,
-                  color: "#6b7280",
-                  marginBottom: 20,
-                }}
-              >
-                Facial tissues · Garbage bags · Zip-lock bags · Foil & wrap ·
-                Basic stationery
-              </p>
-
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <button
-                  style={buttonPrimary}
-                  onClick={() =>
-                    (window.location.href = "https://wa.me/923001234567")
-                  }
-                >
+              <div style={heroButtons}>
+                <button style={primaryBtn} onClick={handleWhatsApp}>
                   Order on WhatsApp
                 </button>
-                <button
-                  style={buttonSecondary}
-                  onClick={() => {
-                    const el = document.getElementById("products");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  View product range
+                <button style={secondaryBtn} onClick={scrollToProducts}>
+                  Browse essentials
                 </button>
               </div>
 
-              <div
-                style={{
-                  marginTop: 18,
-                  display: "flex",
-                  gap: 16,
-                  flexWrap: "wrap",
-                  fontSize: 12,
-                  color: "#64748b",
-                }}
-              >
-                <span>✔ No health or skin products</span>
-                <span>✔ Easy storage & shipping</span>
-                <span>✔ Built for repeat customers</span>
+              <div style={heroMeta}>
+                <span>✔ Repeat-purchase items only</span>
+                <span>✔ Low storage & shipping complexity</span>
+                <span>✔ Perfect for Karachi households & offices</span>
               </div>
             </div>
 
-            <div style={cardStyle}>
-              <div style={badgeStyle}>Phase 1 · Launch Scope</div>
-              <h2
-                style={{
-                  marginTop: 12,
-                  fontSize: 18,
-                  marginBottom: 12,
-                }}
-              >
-                Locked Product Categories
+            <aside style={heroCard}>
+              <div style={chip}>Future Consumables Brand · Locked Plan</div>
+              <h2 style={{ marginTop: 12, marginBottom: 10, fontSize: 18 }}>
+                Launch Scope for SafaayiCo
               </h2>
               <ul
                 style={{
-                  listStyle: "none",
-                  padding: 0,
+                  paddingLeft: 18,
                   margin: 0,
-                  fontSize: 14,
-                  color: "#374151",
+                  fontSize: 13,
                   lineHeight: 1.7,
+                  color: "#e5e7eb",
                 }}
               >
                 <li>
-                  <strong>Paper & Hygiene</strong> – facial tissues, kitchen
-                  rolls, paper towels, non-medicated wet wipes
+                  <strong>Paper & Hygiene</strong>: facial tissues, kitchen
+                  rolls, paper towels, basic wet wipes.
                 </li>
                 <li>
-                  <strong>Home Utility</strong> – garbage bags, trash liners,
-                  zip-lock & food storage bags, foil, cling wrap
+                  <strong>Home Utility</strong>: garbage bags, trash liners,
+                  zip-lock & food storage bags, foil, cling wrap.
                 </li>
                 <li>
-                  <strong>Office & School</strong> – notebooks, copy paper,
-                  pens, markers, sticky notes
+                  <strong>Office & School</strong>: notebooks, copy paper, pens,
+                  markers, sticky notes.
                 </li>
                 <li>
-                  <strong>Household Essentials</strong> – disposable gloves,
-                  cleaning cloths, small bins, plastic organizers
+                  <strong>Household Essentials</strong>: disposable gloves,
+                  cleaning cloths, small bins, plastic organizers.
                 </li>
               </ul>
               <p
                 style={{
-                  marginTop: 12,
+                  marginTop: 10,
                   fontSize: 12,
-                  color: "#6b7280",
+                  color: "#9ca3af",
                 }}
               >
-                Excluded: skincare, haircare, cosmetics, medicinal items, food
-                or any high-risk product.
+                Excluded now and in future: skincare, haircare, cosmetics,
+                medicinal items, food or anything with health or life risk.
               </p>
-            </div>
-          </div>
-        </section>
+            </aside>
+          </section>
 
-        {/* Products */}
-        <section id="products" style={sectionStyle}>
-          <h2 style={{ fontSize: 24, marginBottom: 16 }}>Phase-1 Focus SKUs</h2>
-          <p style={{ fontSize: 14, color: "#6b7280", marginBottom: 20 }}>
-            Start lean, repeat fast. SaafCo focuses on a small set of
-            high-rotation items that sell every month in Karachi households and
-            offices.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gap: 20,
-              gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-            }}
-          >
-            <div style={cardStyle}>
-              <div style={badgeStyle}>Garbage Bags</div>
-              <h3 style={{ marginTop: 10, marginBottom: 6, fontSize: 18 }}>
-                Heavy-Duty Trash Bags
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563", marginBottom: 8 }}>
-                Small, medium and large rolls for homes, apartments and
-                restaurants.
-              </p>
-              <p style={{ fontSize: 12, color: "#6b7280" }}>
-                Target price: Rs 250–450 / roll · Margin: Rs 100–150.
-              </p>
+          {/* FEATURED PRODUCTS */}
+          <section id="products" style={productSection}>
+            <div style={sectionTitleRow}>
+              <h2 style={sectionTitle}>Featured SafaayiCo Essentials</h2>
+              <button style={secondaryBtn} onClick={handleWhatsApp}>
+                Get full price list
+              </button>
             </div>
-
-            <div style={cardStyle}>
-              <div style={badgeStyle}>Tissues</div>
-              <h3 style={{ marginTop: 10, marginBottom: 6, fontSize: 18 }}>
-                Premium Facial Tissues
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563", marginBottom: 8 }}>
-                Soft, strong tissue boxes for families, offices and cafes.
-              </p>
-              <p style={{ fontSize: 12, color: "#6b7280" }}>
-                Target price: Rs 160–200 / box · High repeat usage.
-              </p>
-            </div>
-
-            <div style={cardStyle}>
-              <div style={badgeStyle}>Storage</div>
-              <h3 style={{ marginTop: 10, marginBottom: 6, fontSize: 18 }}>
-                Zip-Lock Storage Bags
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563", marginBottom: 8 }}>
-                Resealable food-safe bags for kitchen, school and office use.
-              </p>
-              <p style={{ fontSize: 12, color: "#6b7280" }}>
-                Target price: Rs 250–300 / pack · Ideal for bundles.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Why SaafCo */}
-        <section id="why" style={{ ...sectionStyle, paddingBottom: 24 }}>
-          <h2 style={{ fontSize: 24, marginBottom: 16 }}>
-            Why this brand works in Karachi
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gap: 20,
-              gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-            }}
-          >
-            <div style={cardStyle}>
-              <h3 style={{ fontSize: 16, marginBottom: 6 }}>Repeat Purchases</h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                Every home, office and restaurant buys these consumables again
-                and again. Stable, monthly demand instead of one-time gadgets.
-              </p>
-            </div>
-            <div style={cardStyle}>
-              <h3 style={{ fontSize: 16, marginBottom: 6 }}>
-                Low Risk, Simple Ops
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                No expiry-critical food, no regulated creams, no medicines.
-                Storage is simple, shipping is low-stress and teen-friendly to
-                manage.
-              </p>
-            </div>
-            <div style={cardStyle}>
-              <h3 style={{ fontSize: 16, marginBottom: 6 }}>Low Brand Loyalty</h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                Most people don&apos;t care which brand of tissue or garbage bag
-                they buy – as long as quality is clean and packaging is
-                trustworthy. That&apos;s your entry point.
-              </p>
-            </div>
-            <div style={cardStyle}>
-              <h3 style={{ fontSize: 16, marginBottom: 6 }}>
-                Built for Calm Growth
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                One store at a time, fully stable before expansion. Designed to
-                be a quiet, predictable side business that can scale slowly with
-                systems, not stress.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section id="how" style={sectionStyle}>
-          <h2 style={{ fontSize: 24, marginBottom: 16 }}>Launch model</h2>
-          <div
-            style={{
-              ...cardStyle,
-              display: "grid",
-              gap: 16,
-              gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-            }}
-          >
-            <div>
-              <div style={badgeStyle}>Step 1</div>
-              <h3 style={{ marginTop: 8, fontSize: 16 }}>Lock SKUs & Packaging</h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                Start with a tight list of SKUs. Finalize SaafCo branding and
-                packaging that looks premium but prints economically.
-              </p>
-            </div>
-            <div>
-              <div style={badgeStyle}>Step 2</div>
-              <h3 style={{ marginTop: 8, fontSize: 16 }}>
-                Test on Daraz & Retail
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                Launch first batches through Daraz, TikTok Shop and a few pilot
-                retailers in Karachi to validate pricing and demand.
-              </p>
-            </div>
-            <div>
-              <div style={badgeStyle}>Step 3</div>
-              <h3 style={{ marginTop: 8, fontSize: 16 }}>
-                Build Repeat Customers
-              </h3>
-              <p style={{ fontSize: 13, color: "#4b5563" }}>
-                Offer simple bundles and repeat discounts. Focus on monthly
-                orders instead of chasing new customers every time.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section id="contact" style={{ ...sectionStyle, paddingBottom: 40 }}>
-          <div style={cardStyle}>
-            <h2 style={{ fontSize: 22, marginBottom: 8 }}>Contact & Next Steps</h2>
-            <p style={{ fontSize: 14, color: "#4b5563", marginBottom: 12 }}>
-              This project is designed as a future, low-risk consumables brand to
-              be launched after QuantumTech and StudiesMate are stable. Use this
-              site as a base to refine copy, pricing and product photos.
+            <p style={sectionSub}>
+              Discover handpicked consumables that families and offices in
+              Karachi buy every month. Start lean, repeat fast.
             </p>
-            <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 12 }}>
-              When you are ready to start:
+
+            <div style={productGrid}>
+              {/* Product 1 */}
+              <article style={card}>
+                <div style={cardBadgeRow}>
+                  <span style={tagBadge}>Bestseller</span>
+                  <span style={labelBadge}>Paper & Hygiene</span>
+                </div>
+                <h3 style={cardTitle}>Premium Facial Tissues (Box)</h3>
+                <p style={cardText}>
+                  Soft, strong tissue boxes ideal for living rooms, offices and
+                  cafés. Clean, neutral packaging that fits anywhere.
+                </p>
+                <div style={priceRow}>
+                  <span style={price}>Rs 170</span>
+                  <span style={oldPrice}>Rs 199</span>
+                </div>
+                <div style={tagRow}>
+                  <span style={pill}>150 sheets</span>
+                  <span style={pill}>Soft & strong</span>
+                  <span style={pill}>High repeat usage</span>
+                </div>
+                <div style={cardButtons}>
+                  <button style={smallPrimary} onClick={handleWhatsApp}>
+                    Order on WhatsApp
+                  </button>
+                  <button style={smallGhost} onClick={scrollToContact}>
+                    Ask for bulk pricing
+                  </button>
+                </div>
+              </article>
+
+              {/* Product 2 */}
+              <article style={card}>
+                <div style={cardBadgeRow}>
+                  <span style={tagBadge}>Family Pack</span>
+                  <span style={labelBadge}>Home Utility</span>
+                </div>
+                <h3 style={cardTitle}>Heavy-Duty Garbage Bag Rolls</h3>
+                <p style={cardText}>
+                  Small, medium and large trash bags for homes and apartments.
+                  Leak-resistant and strong enough for Karachi households.
+                </p>
+                <div style={priceRow}>
+                  <span style={price}>Rs 280–420</span>
+                  <span style={oldPrice}>Rs 320–480</span>
+                </div>
+                <div style={tagRow}>
+                  <span style={pill}>S / M / L sizes</span>
+                  <span style={pill}>Thick material</span>
+                  <span style={pill}>Kitchen & society use</span>
+                </div>
+                <div style={cardButtons}>
+                  <button style={smallPrimary} onClick={handleWhatsApp}>
+                    Order on WhatsApp
+                  </button>
+                  <button style={smallGhost} onClick={scrollToContact}>
+                    Add to monthly bundle
+                  </button>
+                </div>
+              </article>
+
+              {/* Product 3 */}
+              <article style={card}>
+                <div style={cardBadgeRow}>
+                  <span style={tagBadge}>New</span>
+                  <span style={labelBadge}>Storage</span>
+                </div>
+                <h3 style={cardTitle}>Zip-Lock Food & Storage Bags</h3>
+                <p style={cardText}>
+                  Resealable, food-safe bags for snacks, school lunch, spices
+                  and small items. Perfect for parents and small offices.
+                </p>
+                <div style={priceRow}>
+                  <span style={price}>Rs 260–320</span>
+                </div>
+                <div style={tagRow}>
+                  <span style={pill}>20–30 pcs pack</span>
+                  <span style={pill}>Food-safe</span>
+                  <span style={pill}>Kitchen & travel</span>
+                </div>
+                <div style={cardButtons}>
+                  <button style={smallPrimary} onClick={handleWhatsApp}>
+                    Order on WhatsApp
+                  </button>
+                  <button style={smallGhost} onClick={scrollToContact}>
+                    View combo deals
+                  </button>
+                </div>
+              </article>
+
+              {/* Product 4 */}
+              <article style={card}>
+                <div style={cardBadgeRow}>
+                  <span style={tagBadge}>Starter</span>
+                  <span style={labelBadge}>Household Essentials</span>
+                </div>
+                <h3 style={cardTitle}>Microfiber Cleaning Cloth Pack</h3>
+                <p style={cardText}>
+                  Reusable microfiber cloths for dusting, kitchen counters and
+                  glass. Less waste compared to disposable wipes.
+                </p>
+                <div style={priceRow}>
+                  <span style={price}>Rs 220–280</span>
+                </div>
+                <div style={tagRow}>
+                  <span style={pill}>Pack of 3–5</span>
+                  <span style={pill}>Machine washable</span>
+                  <span style={pill}>Home & office</span>
+                </div>
+                <div style={cardButtons}>
+                  <button style={smallPrimary} onClick={handleWhatsApp}>
+                    Order on WhatsApp
+                  </button>
+                  <button style={smallGhost} onClick={scrollToContact}>
+                    Bundle with tissues
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <p style={infoStrip}>
+              All products above are part of the locked future scope for
+              SafaayiCo. Actual pricing and SKUs will be finalized when the
+              brand is launched after QuantumTech and StudiesMate are stable.
             </p>
-            <ul
+          </section>
+
+          {/* CONTACT */}
+          <section id="contact" style={{ marginTop: 32 }}>
+            <h2 style={sectionTitle}>Contact & Launch Plan</h2>
+            <p style={sectionSub}>
+              SafaayiCo is designed as a calm, low-risk consumables brand for
+              later. Use this site as a planning base for suppliers, packaging
+              and bundles.
+            </p>
+            <div
               style={{
+                backgroundColor: "#020617",
+                borderRadius: 14,
+                border: "1px solid rgba(37,99,235,0.6)",
+                padding: 18,
                 fontSize: 13,
-                color: "#4b5563",
-                paddingLeft: 18,
-                marginBottom: 16,
+                color: "#e5e7eb",
               }}
             >
-              <li>Lock suppliers for tissue, bags and stationery.</li>
-              <li>Finalize 3–5 launch SKUs and bundle strategy.</li>
-              <li>Add real product photos to this website.</li>
-              <li>Connect WhatsApp, Daraz and TikTok links here.</li>
-            </ul>
+              <ul
+                style={{
+                  margin: 0,
+                  paddingLeft: 18,
+                  lineHeight: 1.7,
+                }}
+              >
+                <li>Lock 3–5 main SKUs for launch (tissues, bags, zip-locks).</li>
+                <li>
+                  Finalize packaging and suppliers while QuantumTech & StudiesMate
+                  grow.
+                </li>
+                <li>
+                  Launch on Daraz / WhatsApp first, then slowly add retail and
+                  office supply partners in Karachi.
+                </li>
+              </ul>
 
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button
-                style={buttonPrimary}
-                onClick={() =>
-                  (window.location.href = "https://wa.me/923001234567")
-                }
-              >
-                Chat on WhatsApp
-              </button>
-              <button
-                style={buttonSecondary}
-                onClick={() =>
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                }
-              >
-                Back to top
-              </button>
+              <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
+                <button style={primaryBtn} onClick={handleWhatsApp}>
+                  Chat on WhatsApp
+                </button>
+                <button
+                  style={secondaryBtn}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                >
+                  Back to top
+                </button>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: "1px solid #e5e7eb",
-          padding: "16px 0",
-          fontSize: 12,
-          color: "#9ca3af",
-          textAlign: "center",
-        }}
-      >
-        <span>
-          © {new Date().getFullYear()} SaafCo · Future consumables brand
-          concept for Karachi.
-        </span>
-      </footer>
+        {/* FOOTER */}
+        <footer style={footer}>
+          <span>
+            © {new Date().getFullYear()} SafaayiCo · Future consumables brand
+            concept for Karachi.
+          </span>
+          <span>Built as a planning site while QuantumTech & StudiesMate scale.</span>
+        </footer>
+      </div>
     </div>
   );
 };
