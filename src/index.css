@@ -1,54 +1,60 @@
-/* NAVBAR UNDERLINE EFFECT */
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- NAV UNDERLINE ---------- */
 .nav-link {
   position: relative;
-  padding: 6px 10px;
+  background: none;
+  border: none;
   cursor: pointer;
-  color: #0f172a;
+  font-size: 15px;
   font-weight: 500;
-  text-decoration: none;
+  color: #0f172a;
+  padding-bottom: 6px;
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -3px;
+  bottom: 0;
   width: 0%;
   height: 3px;
   background: #2563eb;
-  transition: width 0.25s ease-in-out;
-  border-radius: 2px;
+  border-radius: 4px;
+  transition: width 0.25s ease;
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* ACTIVE TAB */
-.active {
-  color: #2563eb !important;
+.nav-link.active {
+  color: #2563eb;
 }
 
-.active::after {
+.nav-link.active::after {
   width: 100%;
 }
 
-/* CARD / IMAGE FLOAT */
-.card-hover {
+/* ---------- CARD / IMAGE FLOAT ---------- */
+.float-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-hover:hover {
+.float-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* BUTTON HOVER EFFECT */
+/* ---------- BUTTON HOVER ---------- */
 .btn-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
 }
