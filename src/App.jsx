@@ -1,50 +1,33 @@
 import React, { useState } from "react";
 
-/* ✅ CHANGE YOUR WHATSAPP NUMBER HERE */
+/* CHANGE WHATSAPP NUMBER HERE */
 const WHATSAPP = "https://wa.me/923001234567";
 
-const openWA = (msg) => {
+const openWA = (msg) =>
   window.open(`${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
-};
 
 export default function App() {
   const [page, setPage] = useState("home");
 
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        backgroundColor: "#f4f6f8",
-        minHeight: "100vh",
-      }}
-    >
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
+    <div className="app-root">
+      <div className="app-shell">
         {/* NAVBAR */}
-        <header
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 40,
-          }}
-        >
-          <div style={{ fontSize: 22, fontWeight: 800 }}>SafaayiCo</div>
-
-          <nav style={{ display: "flex", gap: 24 }}>
+        <header className="navbar">
+          <div className="nav-brand">SafaayiCo</div>
+          <nav>
             <button
               className={`nav-link ${page === "home" ? "active" : ""}`}
               onClick={() => setPage("home")}
             >
               Home
             </button>
-
             <button
               className={`nav-link ${page === "products" ? "active" : ""}`}
               onClick={() => setPage("products")}
             >
               Products
             </button>
-
             <button
               className={`nav-link ${page === "contact" ? "active" : ""}`}
               onClick={() => setPage("contact")}
@@ -57,132 +40,111 @@ export default function App() {
         {/* HOME PAGE */}
         {page === "home" && (
           <>
-            <h1 style={{ marginBottom: 12 }}>
-              Daily-use consumables, zero health risk
-            </h1>
+            <section className="hero">
+              <div>
+                <h1 className="hero-title">
+                  Daily-use consumables,{" "}
+                  <span className="hero-highlight">zero health risk.</span>
+                </h1>
+                <p className="hero-text">
+                  SafaayiCo provides safe, repeat-purchase household and office
+                  essentials. No food, no skincare, no chemicals — only simple,
+                  dependable products that are easy to store and ship.
+                </p>
 
-            <p style={{ maxWidth: 600, marginBottom: 20 }}>
-              SafaayiCo provides safe, repeat-purchase household and office
-              essentials. No food, no skincare, no chemicals — only simple,
-              dependable products.
-            </p>
+                <button
+                  className="btn-primary btn-hover"
+                  onClick={() =>
+                    openWA("Hi, I want to order SafaayiCo products.")
+                  }
+                >
+                  Order on WhatsApp
+                </button>
+              </div>
 
-            <button
-              className="btn-hover"
-              onClick={() =>
-                openWA("Hi, I want to order SafaayiCo products.")
-              }
-              style={{
-                padding: "12px 20px",
-                borderRadius: 999,
-                border: "none",
-                background: "#2563eb",
-                color: "#fff",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              Order on WhatsApp
-            </button>
+              <div className="hero-image-wrapper float-card">
+                <img
+                  src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Tissues"
+                  className="hero-image"
+                />
+              </div>
+            </section>
           </>
         )}
 
         {/* PRODUCTS PAGE */}
         {page === "products" && (
           <>
-            <h2 style={{ marginBottom: 20 }}>Products</h2>
+            <h2 className="section-title">Phase-1 Products</h2>
+            <p className="section-subtitle">
+              Start lean and focus on a few high-rotation SKUs that sell every
+              month in Karachi households and offices.
+            </p>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
-                gap: 20,
-              }}
-            >
-              {/* PRODUCT CARD */}
-              <div
-                className="float-card"
+            <div className="products-grid">
+              <article
+                className="product-card float-card"
                 onClick={() =>
                   openWA("I want to order SafaayiCo Facial Tissues.")
                 }
-                style={{
-                  background: "#fff",
-                  padding: 18,
-                  borderRadius: 12,
-                  cursor: "pointer",
-                }}
               >
                 <img
-                  className="float-card"
-                  src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg"
+                  className="product-image float-card"
+                  src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Tissues"
-                  style={{
-                    width: "100%",
-                    height: 160,
-                    objectFit: "cover",
-                    borderRadius: 8,
-                    marginBottom: 10,
-                  }}
                 />
-                <h3>Facial Tissues</h3>
-                <p>Soft, high-usage everyday tissues.</p>
-              </div>
+                <h3 className="product-title">Facial Tissues</h3>
+                <p className="product-text">
+                  Soft, strong tissue boxes for homes, offices and cafés. High
+                  repeat usage, easy to ship and store.
+                </p>
+                <div className="product-meta">
+                  Target price: Rs 160–200 / box
+                </div>
+              </article>
 
-              <div
-                className="float-card"
+              <article
+                className="product-card float-card"
                 onClick={() =>
                   openWA("I want to order SafaayiCo Garbage Bags.")
                 }
-                style={{
-                  background: "#fff",
-                  padding: 18,
-                  borderRadius: 12,
-                  cursor: "pointer",
-                }}
               >
                 <img
-                  className="float-card"
-                  src="https://images.pexels.com/photos/3735213/pexels-photo-3735213.jpeg"
+                  className="product-image float-card"
+                  src="https://images.pexels.com/photos/3735213/pexels-photo-3735213.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Garbage bags"
-                  style={{
-                    width: "100%",
-                    height: 160,
-                    objectFit: "cover",
-                    borderRadius: 8,
-                    marginBottom: 10,
-                  }}
                 />
-                <h3>Garbage Bags</h3>
-                <p>Leak-resistant bags for home & office.</p>
-              </div>
+                <h3 className="product-title">Garbage Bags</h3>
+                <p className="product-text">
+                  Leak-resistant rolls for kitchens and apartments. Medium and
+                  large sizes for Karachi usage.
+                </p>
+                <div className="product-meta">
+                  Target price: Rs 250–450 / roll
+                </div>
+              </article>
 
-              <div
-                className="float-card"
+              <article
+                className="product-card float-card"
                 onClick={() =>
                   openWA("I want to order SafaayiCo Zip-Lock Bags.")
                 }
-                style={{
-                  background: "#fff",
-                  padding: 18,
-                  borderRadius: 12,
-                  cursor: "pointer",
-                }}
               >
                 <img
-                  className="float-card"
-                  src="https://images.pexels.com/photos/7319191/pexels-photo-7319191.jpeg"
-                  alt="Ziplock"
-                  style={{
-                    width: "100%",
-                    height: 160,
-                    objectFit: "cover",
-                    borderRadius: 8,
-                    marginBottom: 10,
-                  }}
+                  className="product-image float-card"
+                  src="https://images.pexels.com/photos/7319191/pexels-photo-7319191.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Ziplock bags"
                 />
-                <h3>Zip-Lock Bags</h3>
-                <p>Reusable storage bags for food & items.</p>
-              </div>
+                <h3 className="product-title">Zip-Lock Bags</h3>
+                <p className="product-text">
+                  Resealable storage for snacks, spices and small items. Perfect
+                  for bundles and family packs.
+                </p>
+                <div className="product-meta">
+                  Target price: Rs 250–300 / pack
+                </div>
+              </article>
             </div>
           </>
         )}
@@ -190,28 +152,18 @@ export default function App() {
         {/* CONTACT PAGE */}
         {page === "contact" && (
           <>
-            <h2>Contact & Launch</h2>
-
-            <p style={{ maxWidth: 600 }}>
-              SafaayiCo is a future consumables brand. Use this channel for
-              supplier discussions, bundles and pricing planning.
+            <h2 className="section-title">Contact & Launch Planning</h2>
+            <p className="section-subtitle">
+              SafaayiCo will launch after QuantumTech and StudiesMate are
+              stable. Use WhatsApp for supplier discussions, bundles and phase-1
+              launch planning.
             </p>
 
             <button
-              className="btn-hover"
+              className="btn-secondary btn-hover"
               onClick={() =>
                 openWA("I want to discuss SafaayiCo launch planning.")
               }
-              style={{
-                marginTop: 16,
-                padding: "12px 20px",
-                borderRadius: 999,
-                border: "none",
-                background: "#2563eb",
-                color: "#fff",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
             >
               Chat on WhatsApp
             </button>
@@ -219,15 +171,7 @@ export default function App() {
         )}
 
         {/* FOOTER */}
-        <footer
-          style={{
-            marginTop: 50,
-            paddingTop: 16,
-            borderTop: "1px solid #ddd",
-            fontSize: 13,
-            color: "#555",
-          }}
-        >
+        <footer className="footer">
           © {new Date().getFullYear()} SafaayiCo · Karachi
         </footer>
       </div>
