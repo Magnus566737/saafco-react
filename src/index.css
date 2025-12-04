@@ -1,9 +1,40 @@
-/* ---------- GLOBAL ---------- */
+/* GLOBAL */
 * {
   box-sizing: border-box;
 }
 
-/* ---------- NAV UNDERLINE ---------- */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #020617; /* dark navy */
+}
+
+/* SHELL */
+.app-root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  color: #e5e7eb;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.nav-brand {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* underline effect like mkphysics */
 .nav-link {
   position: relative;
   background: none;
@@ -11,8 +42,9 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: 500;
-  color: #0f172a;
-  padding-bottom: 6px;
+  color: #e5e7eb;
+  padding: 0 0 6px 0;
+  margin-left: 20px;
 }
 
 .nav-link::after {
@@ -39,22 +71,141 @@
   width: 100%;
 }
 
-/* ---------- CARD / IMAGE FLOAT ---------- */
-.float-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 36px;
 }
 
-.float-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.15);
+.hero-title {
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0 0 12px;
 }
 
-/* ---------- BUTTON HOVER ---------- */
+.hero-highlight {
+  color: #38bdf8;
+}
+
+.hero-text {
+  font-size: 14px;
+  color: #cbd5f5;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.hero-image-wrapper {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* BUTTONS */
+.btn-primary,
+.btn-secondary {
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #22c55e, #2563eb);
+  color: #020617;
+}
+
+.btn-secondary {
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+/* hover lift */
 .btn-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 14px rgba(15, 23, 42, 0.6);
+}
+
+/* FLOATING CARDS / IMAGES */
+.float-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.float-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* PRODUCTS */
+.section-title {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.section-subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #cbd5f5;
+  max-width: 600px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.product-card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  cursor: pointer;
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.product-text {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+.product-meta {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 40px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(51, 65, 85, 0.7);
+  font-size: 12px;
+  color: #9ca3af;
 }
