@@ -1,194 +1,235 @@
 import React, { useState } from "react";
 
-/* ====== CHANGE WHATSAPP NUMBER HERE ====== */
+/* ✅ CHANGE YOUR WHATSAPP NUMBER HERE */
 const WHATSAPP = "https://wa.me/923001234567";
 
-const openWA = (msg) =>
+const openWA = (msg) => {
   window.open(`${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
-
-/* ====== STYLES ====== */
-const page = {
-  fontFamily: "system-ui, sans-serif",
-  background: "#f4f6f8",
-  minHeight: "100vh",
 };
 
-const container = {
-  maxWidth: "1100px",
-  margin: "0 auto",
-  padding: "20px",
-};
-
-const nav = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "40px",
-};
-
-const logo = {
-  fontWeight: 800,
-  fontSize: 22,
-};
-
-const navLinks = {
-  display: "flex",
-  gap: "24px",
-};
-
-const link = (active) => ({
-  background: "none",
-  border: "none",
-  cursor: "pointer",
-  fontSize: 15,
-  fontWeight: 500,
-  position: "relative",
-  paddingBottom: 6,
-  color: active ? "#2563eb" : "#111",
-  outline: "none",
-});
-
-const underline = {
-  content: '""',
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  height: 3,
-  width: "100%",
-  background: "#2563eb",
-  borderRadius: 3,
-};
-
-const card = {
-  background: "#fff",
-  borderRadius: 14,
-  padding: 18,
-  transition: "all 0.25s ease",
-  cursor: "pointer",
-};
-
-const cardHover = {
-  transform: "translateY(-6px)",
-  boxShadow: "0 12px 24px rgba(0,0,0,.12)",
-};
-
-const imgStyle = {
-  width: "100%",
-  height: 160,
-  objectFit: "cover",
-  borderRadius: 10,
-  marginBottom: 12,
-};
-
-const button = {
-  marginTop: 10,
-  padding: "10px 16px",
-  borderRadius: 999,
-  border: "none",
-  background: "#2563eb",
-  color: "#fff",
-  fontWeight: 600,
-  cursor: "pointer",
-  transition: "all .25s ease",
-};
-
-const buttonHover = {
-  transform: "translateY(-3px)",
-  boxShadow: "0 8px 14px rgba(0,0,0,.15)",
-};
-
-/* ====== APP ====== */
 export default function App() {
-  const [pageName, setPage] = useState("home");
-  const [hover, setHover] = useState(null);
-  const [btnHover, setBtnHover] = useState(false);
+  const [page, setPage] = useState("home");
 
   return (
-    <div style={page}>
-      <div style={container}>
+    <div
+      style={{
+        fontFamily: "system-ui, sans-serif",
+        backgroundColor: "#f4f6f8",
+        minHeight: "100vh",
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
         {/* NAVBAR */}
-        <header style={nav}>
-          <div style={logo}>SafaayiCo</div>
-          <nav style={navLinks}>
-            {["home", "products", "contact"].map((p) => (
-              <button key={p} style={link(pageName === p)} onClick={() => setPage(p)}>
-                {p.charAt(0).toUpperCase() + p.slice(1)}
-                {pageName === p && <span style={underline} />}
-              </button>
-            ))}
+        <header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 40,
+          }}
+        >
+          <div style={{ fontSize: 22, fontWeight: 800 }}>SafaayiCo</div>
+
+          <nav style={{ display: "flex", gap: 24 }}>
+            <button
+              className={`nav-link ${page === "home" ? "active" : ""}`}
+              onClick={() => setPage("home")}
+            >
+              Home
+            </button>
+
+            <button
+              className={`nav-link ${page === "products" ? "active" : ""}`}
+              onClick={() => setPage("products")}
+            >
+              Products
+            </button>
+
+            <button
+              className={`nav-link ${page === "contact" ? "active" : ""}`}
+              onClick={() => setPage("contact")}
+            >
+              Contact
+            </button>
           </nav>
         </header>
 
-        {/* HOME */}
-        {pageName === "home" && (
+        {/* HOME PAGE */}
+        {page === "home" && (
           <>
-            <h1>Daily-use consumables, zero health risk.</h1>
-            <p>
-              SafaayiCo provides safe, repeat-purchase household essentials.
-              No food. No chemicals. No skincare.
+            <h1 style={{ marginBottom: 12 }}>
+              Daily-use consumables, zero health risk
+            </h1>
+
+            <p style={{ maxWidth: 600, marginBottom: 20 }}>
+              SafaayiCo provides safe, repeat-purchase household and office
+              essentials. No food, no skincare, no chemicals — only simple,
+              dependable products.
             </p>
 
             <button
-              style={{ ...button, ...(btnHover ? buttonHover : {}) }}
-              onMouseEnter={() => setBtnHover(true)}
-              onMouseLeave={() => setBtnHover(false)}
-              onClick={() => openWA("I want to order SafaayiCo products")}
+              className="btn-hover"
+              onClick={() =>
+                openWA("Hi, I want to order SafaayiCo products.")
+              }
+              style={{
+                padding: "12px 20px",
+                borderRadius: 999,
+                border: "none",
+                background: "#2563eb",
+                color: "#fff",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
             >
               Order on WhatsApp
             </button>
           </>
         )}
 
-        {/* PRODUCTS */}
-        {pageName === "products" && (
+        {/* PRODUCTS PAGE */}
+        {page === "products" && (
           <>
-            <h2>Products</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 20 }}>
-              {[
-                {
-                  t: "Facial Tissues",
-                  img: "https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg",
-                },
-                {
-                  t: "Garbage Bags",
-                  img: "https://images.pexels.com/photos/3735213/pexels-photo-3735213.jpeg",
-                },
-                {
-                  t: "Zip-Lock Bags",
-                  img: "https://images.pexels.com/photos/7319191/pexels-photo-7319191.jpeg",
-                },
-              ].map((p, i) => (
-                <div
-                  key={i}
-                  style={{ ...card, ...(hover === i ? cardHover : {}) }}
-                  onMouseEnter={() => setHover(i)}
-                  onMouseLeave={() => setHover(null)}
-                  onClick={() => openWA(`I want ${p.t}`)}
-                >
-                  <img src={p.img} alt={p.t} style={imgStyle} />
-                  <h3>{p.t}</h3>
-                  <p>High rotation, everyday essential.</p>
-                </div>
-              ))}
+            <h2 style={{ marginBottom: 20 }}>Products</h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
+                gap: 20,
+              }}
+            >
+              {/* PRODUCT CARD */}
+              <div
+                className="float-card"
+                onClick={() =>
+                  openWA("I want to order SafaayiCo Facial Tissues.")
+                }
+                style={{
+                  background: "#fff",
+                  padding: 18,
+                  borderRadius: 12,
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  className="float-card"
+                  src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg"
+                  alt="Tissues"
+                  style={{
+                    width: "100%",
+                    height: 160,
+                    objectFit: "cover",
+                    borderRadius: 8,
+                    marginBottom: 10,
+                  }}
+                />
+                <h3>Facial Tissues</h3>
+                <p>Soft, high-usage everyday tissues.</p>
+              </div>
+
+              <div
+                className="float-card"
+                onClick={() =>
+                  openWA("I want to order SafaayiCo Garbage Bags.")
+                }
+                style={{
+                  background: "#fff",
+                  padding: 18,
+                  borderRadius: 12,
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  className="float-card"
+                  src="https://images.pexels.com/photos/3735213/pexels-photo-3735213.jpeg"
+                  alt="Garbage bags"
+                  style={{
+                    width: "100%",
+                    height: 160,
+                    objectFit: "cover",
+                    borderRadius: 8,
+                    marginBottom: 10,
+                  }}
+                />
+                <h3>Garbage Bags</h3>
+                <p>Leak-resistant bags for home & office.</p>
+              </div>
+
+              <div
+                className="float-card"
+                onClick={() =>
+                  openWA("I want to order SafaayiCo Zip-Lock Bags.")
+                }
+                style={{
+                  background: "#fff",
+                  padding: 18,
+                  borderRadius: 12,
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  className="float-card"
+                  src="https://images.pexels.com/photos/7319191/pexels-photo-7319191.jpeg"
+                  alt="Ziplock"
+                  style={{
+                    width: "100%",
+                    height: 160,
+                    objectFit: "cover",
+                    borderRadius: 8,
+                    marginBottom: 10,
+                  }}
+                />
+                <h3>Zip-Lock Bags</h3>
+                <p>Reusable storage bags for food & items.</p>
+              </div>
             </div>
           </>
         )}
 
-        {/* CONTACT */}
-        {pageName === "contact" && (
+        {/* CONTACT PAGE */}
+        {page === "contact" && (
           <>
-            <h2>Contact</h2>
-            <p>Launch planning, suppliers & bundles.</p>
+            <h2>Contact & Launch</h2>
+
+            <p style={{ maxWidth: 600 }}>
+              SafaayiCo is a future consumables brand. Use this channel for
+              supplier discussions, bundles and pricing planning.
+            </p>
+
             <button
-              style={{ ...button, ...(btnHover ? buttonHover : {}) }}
-              onMouseEnter={() => setBtnHover(true)}
-              onMouseLeave={() => setBtnHover(false)}
-              onClick={() => openWA("I want to discuss SafaayiCo")}
+              className="btn-hover"
+              onClick={() =>
+                openWA("I want to discuss SafaayiCo launch planning.")
+              }
+              style={{
+                marginTop: 16,
+                padding: "12px 20px",
+                borderRadius: 999,
+                border: "none",
+                background: "#2563eb",
+                color: "#fff",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
             >
-              WhatsApp Us
+              Chat on WhatsApp
             </button>
           </>
         )}
+
+        {/* FOOTER */}
+        <footer
+          style={{
+            marginTop: 50,
+            paddingTop: 16,
+            borderTop: "1px solid #ddd",
+            fontSize: 13,
+            color: "#555",
+          }}
+        >
+          © {new Date().getFullYear()} SafaayiCo · Karachi
+        </footer>
       </div>
     </div>
   );
