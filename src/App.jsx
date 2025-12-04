@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+
+// TODO: change to your real WhatsApp number
+const WHATSAPP_BASE = "https://wa.me/923001234567";
+
+/* ---------- SHARED STYLES ---------- */
 
 const page = {
   fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
@@ -44,6 +49,14 @@ const navLinks = {
   gap: 20,
   fontSize: 14,
   color: "#cbd5f5",
+};
+
+const navBtnBase = {
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  padding: 0,
+  fontSize: 14,
 };
 
 const heroSection = {
@@ -124,34 +137,36 @@ const heroMeta = {
   color: "#9ca3af",
 };
 
-const heroCard = {
-  background:
-    "radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 55%), radial-gradient(circle at bottom right, rgba(74,222,128,0.2), #020617)",
-  borderRadius: 18,
-  padding: 20,
-  border: "1px solid rgba(148,163,184,0.25)",
-  color: "#e5e7eb",
+const collageWrap = {
+  display: "grid",
+  gridTemplateColumns: "repeat(2,minmax(0,1fr))",
+  gap: 10,
 };
 
-const chip = {
-  display: "inline-block",
-  padding: "4px 10px",
+const collageItem = {
+  position: "relative",
+  borderRadius: 14,
+  overflow: "hidden",
+  border: "1px solid rgba(148,163,184,0.4)",
+  cursor: "pointer",
+};
+
+const collageImg = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
+};
+
+const collageLabel = {
+  position: "absolute",
+  left: 10,
+  bottom: 10,
+  padding: "3px 8px",
   borderRadius: 999,
-  background: "rgba(15,23,42,0.6)",
+  backgroundColor: "rgba(15,23,42,0.85)",
+  color: "#e5e7eb",
   fontSize: 11,
-  textTransform: "uppercase",
-  letterSpacing: "0.08em",
-};
-
-const productSection = {
-  marginTop: 12,
-};
-
-const sectionTitleRow = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  marginBottom: 12,
 };
 
 const sectionTitle = {
@@ -176,6 +191,20 @@ const card = {
   borderRadius: 14,
   padding: 16,
   border: "1px solid rgba(148,163,184,0.55)",
+  cursor: "pointer",
+};
+
+const cardImageWrap = {
+  borderRadius: 10,
+  overflow: "hidden",
+  marginBottom: 10,
+};
+
+const cardImg = {
+  width: "100%",
+  height: 120,
+  objectFit: "cover",
+  display: "block",
 };
 
 const cardBadgeRow = {
@@ -285,19 +314,441 @@ const footer = {
   gap: 10,
 };
 
+/* ---------- HELPERS ---------- */
+
+const openWhatsApp = (message) => {
+  const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+};
+
+/* ---------- PAGES ---------- */
+
+const HomePage = () => {
+  return (
+    <section style={heroSection}>
+      <div>
+        <div style={heroBadge}>Karachi · Home & Office Essentials</div>
+        <h1 style={heroTitle}>
+          Stock up on{" "}
+          <span style={{ color: "#38bdf8" }}>clean, safe consumables</span> with
+          zero health risk.
+        </h1>
+        <p style={heroText}>
+          SafaayiCo curates simple, non-risk daily-use products: tissues,
+          garbage bags, zip-lock bags and cleaning supplies. Built for homes,
+          offices and small businesses in Karachi that want reliable monthly
+          restocking.
+        </p>
+        <p style={heroSub}>
+          No creams, no food, no chemicals. Only paper, hygiene and storage
+          essentials that are easy to store and ship.
+        </p>
+
+        <div style={heroButtons}>
+          <button
+            style={primaryBtn}
+            onClick={() =>
+              openWhatsApp(
+                "Hi, I want to order SafaayiCo essentials for my home/office."
+              )
+            }
+          >
+            Order on WhatsApp
+          </button>
+          <button
+            style={secondaryBtn}
+            onClick={() =>
+              openWhatsApp("Please share your latest SafaayiCo product range.")
+            }
+          >
+            View product range
+          </button>
+        </div>
+
+        <div style={heroMeta}>
+          <span>✔ Repeat-purchase items only</span>
+          <span>✔ Low storage & shipping complexity</span>
+          <span>✔ Ideal for Karachi households & offices</span>
+        </div>
+      </div>
+
+      {/* HERO IMAGE COLLAGE (clickable) */}
+      <aside>
+        <div style={{ marginBottom: 10, color: "#e5e7eb", fontSize: 13 }}>
+          Click any image to ask about that category on WhatsApp.
+        </div>
+        <div style={collageWrap}>
+          <div
+            style={collageItem}
+            onClick={() =>
+              openWhatsApp("I’m interested in SafaayiCo facial tissues.")
+            }
+          >
+            <img
+              style={collageImg}
+              src="https://images.pexels.com/photos/7551446/pexels-photo-7551446.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Facial tissues"
+            />
+            <span style={collageLabel}>Facial Tissues</span>
+          </div>
+          <div
+            style={collageItem}
+            onClick={() =>
+              openWhatsApp("I’m interested in SafaayiCo garbage bag rolls.")
+            }
+          >
+            <img
+              style={collageImg}
+              src="https://images.pexels.com/photos/3735210/pexels-photo-3735210.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Garbage bags"
+            />
+            <span style={collageLabel}>Garbage Bags</span>
+          </div>
+          <div
+            style={collageItem}
+            onClick={() =>
+              openWhatsApp("I’m interested in SafaayiCo zip-lock bags.")
+            }
+          >
+            <img
+              style={collageImg}
+              src="https://images.pexels.com/photos/7319189/pexels-photo-7319189.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Zip-lock bags"
+            />
+            <span style={collageLabel}>Zip-Lock Bags</span>
+          </div>
+          <div
+            style={collageItem}
+            onClick={() =>
+              openWhatsApp("I’m interested in SafaayiCo cleaning cloth packs.")
+            }
+          >
+            <img
+              style={collageImg}
+              src="https://images.pexels.com/photos/3965558/pexels-photo-3965558.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Cleaning cloths"
+            />
+            <span style={collageLabel}>Cleaning Cloths</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+  );
+};
+
+const ProductsPage = () => {
+  return (
+    <section>
+      <h2 style={sectionTitle}>Featured SafaayiCo Essentials</h2>
+      <p style={sectionSub}>
+        Handpicked consumables that families and offices in Karachi buy every
+        month. Start lean, repeat fast.
+      </p>
+
+      <div style={productGrid}>
+        {/* Product 1 */}
+        <article
+          style={card}
+          onClick={() =>
+            openWhatsApp("I want to order Premium Facial Tissues box.")
+          }
+        >
+          <div style={cardImageWrap}>
+            <img
+              style={cardImg}
+              src="https://images.pexels.com/photos/5591870/pexels-photo-5591870.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Premium facial tissues"
+            />
+          </div>
+          <div style={cardBadgeRow}>
+            <span style={tagBadge}>Bestseller</span>
+            <span style={labelBadge}>Paper & Hygiene</span>
+          </div>
+          <h3 style={cardTitle}>Premium Facial Tissues (Box)</h3>
+          <p style={cardText}>
+            Soft, strong tissue boxes ideal for living rooms, offices and cafés.
+            Clean, neutral packaging that fits anywhere.
+          </p>
+          <div style={priceRow}>
+            <span style={price}>Rs 170</span>
+            <span style={oldPrice}>Rs 199</span>
+          </div>
+          <div style={tagRow}>
+            <span style={pill}>150 sheets</span>
+            <span style={pill}>Soft & strong</span>
+            <span style={pill}>High repeat usage</span>
+          </div>
+          <div style={cardButtons}>
+            <button
+              style={smallPrimary}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp("I want to order Premium Facial Tissues.");
+              }}
+            >
+              Order on WhatsApp
+            </button>
+            <button
+              style={smallGhost}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp("Share bulk pricing for facial tissues.");
+              }}
+            >
+              Bulk pricing
+            </button>
+          </div>
+        </article>
+
+        {/* Product 2 */}
+        <article
+          style={card}
+          onClick={() =>
+            openWhatsApp("I want to order Garbage Bag rolls (S/M/L).")
+          }
+        >
+          <div style={cardImageWrap}>
+            <img
+              style={cardImg}
+              src="https://images.pexels.com/photos/3735213/pexels-photo-3735213.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Garbage bags"
+            />
+          </div>
+          <div style={cardBadgeRow}>
+            <span style={tagBadge}>Family Pack</span>
+            <span style={labelBadge}>Home Utility</span>
+          </div>
+          <h3 style={cardTitle}>Heavy-Duty Garbage Bag Rolls</h3>
+          <p style={cardText}>
+            Small, medium and large trash bags for homes and apartments.
+            Leak-resistant and strong enough for Karachi households.
+          </p>
+          <div style={priceRow}>
+            <span style={price}>Rs 280–420</span>
+            <span style={oldPrice}>Rs 320–480</span>
+          </div>
+          <div style={tagRow}>
+            <span style={pill}>S / M / L sizes</span>
+            <span style={pill}>Thick material</span>
+            <span style={pill}>Kitchen & society use</span>
+          </div>
+          <div style={cardButtons}>
+            <button
+              style={smallPrimary}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp("I want to order Heavy-Duty Garbage Bag rolls.");
+              }}
+            >
+              Order on WhatsApp
+            </button>
+            <button
+              style={smallGhost}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp("Add garbage bags to my monthly bundle.");
+              }}
+            >
+              Monthly bundle
+            </button>
+          </div>
+        </article>
+
+        {/* Product 3 */}
+        <article
+          style={card}
+          onClick={() =>
+            openWhatsApp("I want to order Zip-Lock storage bags.")
+          }
+        >
+          <div style={cardImageWrap}>
+            <img
+              style={cardImg}
+              src="https://images.pexels.com/photos/7319191/pexels-photo-7319191.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Zip-lock bags"
+            />
+          </div>
+          <div style={cardBadgeRow}>
+            <span style={tagBadge}>New</span>
+            <span style={labelBadge}>Storage</span>
+          </div>
+          <h3 style={cardTitle}>Zip-Lock Food & Storage Bags</h3>
+          <p style={cardText}>
+            Resealable, food-safe bags for snacks, school lunch, spices and
+            small items. Perfect for parents and small offices.
+          </p>
+          <div style={priceRow}>
+            <span style={price}>Rs 260–320</span>
+          </div>
+          <div style={tagRow}>
+            <span style={pill}>20–30 pcs pack</span>
+            <span style={pill}>Food-safe</span>
+            <span style={pill}>Kitchen & travel</span>
+          </div>
+          <div style={cardButtons}>
+            <button
+              style={smallPrimary}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp(
+                  "I want to order Zip-Lock Food & Storage Bags (SafaayiCo)."
+                );
+              }}
+            >
+              Order on WhatsApp
+            </button>
+            <button
+              style={smallGhost}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp("Share combo deals with zip-lock bags.");
+              }}
+            >
+              Combo deals
+            </button>
+          </div>
+        </article>
+
+        {/* Product 4 */}
+        <article
+          style={card}
+          onClick={() =>
+            openWhatsApp("I want to order Cleaning Cloth packs.")
+          }
+        >
+          <div style={cardImageWrap}>
+            <img
+              style={cardImg}
+              src="https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Cleaning cloths"
+            />
+          </div>
+          <div style={cardBadgeRow}>
+            <span style={tagBadge}>Starter</span>
+            <span style={labelBadge}>Household Essentials</span>
+          </div>
+          <h3 style={cardTitle}>Microfiber Cleaning Cloth Pack</h3>
+          <p style={cardText}>
+            Reusable microfiber cloths for dusting, kitchen counters and glass.
+            Less waste compared to disposable wipes.
+          </p>
+          <div style={priceRow}>
+            <span style={price}>Rs 220–280</span>
+          </div>
+          <div style={tagRow}>
+            <span style={pill}>Pack of 3–5</span>
+            <span style={pill}>Machine washable</span>
+            <span style={pill}>Home & office</span>
+          </div>
+          <div style={cardButtons}>
+            <button
+              style={smallPrimary}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp(
+                  "I want to order Microfiber Cleaning Cloth packs (SafaayiCo)."
+                );
+              }}
+            >
+              Order on WhatsApp
+            </button>
+            <button
+              style={smallGhost}
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp(
+                  "Bundle cleaning cloths with tissues for my order."
+                );
+              }}
+            >
+              Bundle with tissues
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <p style={infoStrip}>
+        These items represent the locked future scope for SafaayiCo. Final SKUs
+        and prices will be decided when the brand is launched after QuantumTech
+        and StudiesMate are stable.
+      </p>
+    </section>
+  );
+};
+
+const ContactPage = () => {
+  return (
+    <section>
+      <h2 style={sectionTitle}>Contact & Launch Plan</h2>
+      <p style={sectionSub}>
+        SafaayiCo is designed as a calm, low-risk consumables brand for later.
+        This page is your planning base for suppliers, packaging and bundles.
+      </p>
+      <div
+        style={{
+          backgroundColor: "#020617",
+          borderRadius: 14,
+          border: "1px solid rgba(37,99,235,0.6)",
+          padding: 18,
+          fontSize: 13,
+          color: "#e5e7eb",
+        }}
+      >
+        <ul
+          style={{
+            margin: 0,
+            paddingLeft: 18,
+            lineHeight: 1.7,
+          }}
+        >
+          <li>
+            Lock 3–5 main SKUs for launch (tissues, garbage bags, zip-locks,
+            cleaning cloths).
+          </li>
+          <li>
+            Finalize packaging and suppliers while QuantumTech & StudiesMate
+            grow.
+          </li>
+          <li>
+            Launch on Daraz / WhatsApp first, then slowly add retail and office
+            supply partners in Karachi.
+          </li>
+        </ul>
+
+        <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
+          <button
+            style={primaryBtn}
+            onClick={() =>
+              openWhatsApp(
+                "Hi, I want to talk about SafaayiCo launch planning and suppliers."
+              )
+            }
+          >
+            Chat on WhatsApp
+          </button>
+          <button
+            style={secondaryBtn}
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+          >
+            Back to top
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ---------- MAIN APP ---------- */
+
 const App = () => {
-  const handleWhatsApp = () => {
-    window.location.href = "https://wa.me/923001234567"; // TODO: replace with real number
-  };
+  const [pageName, setPageName] = useState("home"); // "home" | "products" | "contact"
 
-  const scrollToProducts = () => {
-    const el = document.getElementById("products");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const renderPage = () => {
+    if (pageName === "products") return <ProductsPage />;
+    if (pageName === "contact") return <ContactPage />;
+    return <HomePage />;
   };
 
   return (
@@ -325,304 +776,38 @@ const App = () => {
           </div>
 
           <nav style={navLinks}>
-            <a
-              href="#top"
-              style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
+            <button
+              style={{
+                ...navBtnBase,
+                color: pageName === "home" ? "#ffffff" : "#cbd5f5",
+              }}
+              onClick={() => setPageName("home")}
             >
               Home
-            </a>
-            <a
-              href="#products"
-              style={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
+            </button>
+            <button
+              style={{
+                ...navBtnBase,
+                color: pageName === "products" ? "#ffffff" : "#cbd5f5",
+              }}
+              onClick={() => setPageName("products")}
             >
               Products
-            </a>
+            </button>
             <button
-              onClick={scrollToContact}
               style={{
-                color: "#cbd5f5",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
+                ...navBtnBase,
+                color: pageName === "contact" ? "#ffffff" : "#cbd5f5",
               }}
+              onClick={() => setPageName("contact")}
             >
               Contact
             </button>
           </nav>
         </header>
 
-        {/* HERO */}
-        <main id="top">
-          <section style={heroSection}>
-            <div>
-              <div style={heroBadge}>Karachi · Home & Office Essentials</div>
-              <h1 style={heroTitle}>
-                Stock up on{" "}
-                <span style={{ color: "#38bdf8" }}>clean, safe consumables</span>{" "}
-                with zero health risk.
-              </h1>
-              <p style={heroText}>
-                SafaayiCo curates simple, non-risk daily-use products: tissues,
-                garbage bags, zip-lock bags and cleaning supplies. Built for
-                homes, offices and small businesses in Karachi that want
-                reliable monthly restocking.
-              </p>
-              <p style={heroSub}>
-                No creams, no food, no chemicals. Only paper, hygiene and
-                storage essentials that are easy to store and ship.
-              </p>
-
-              <div style={heroButtons}>
-                <button style={primaryBtn} onClick={handleWhatsApp}>
-                  Order on WhatsApp
-                </button>
-                <button style={secondaryBtn} onClick={scrollToProducts}>
-                  Browse essentials
-                </button>
-              </div>
-
-              <div style={heroMeta}>
-                <span>✔ Repeat-purchase items only</span>
-                <span>✔ Low storage & shipping complexity</span>
-                <span>✔ Perfect for Karachi households & offices</span>
-              </div>
-            </div>
-
-            <aside style={heroCard}>
-              <div style={chip}>Future Consumables Brand · Locked Plan</div>
-              <h2 style={{ marginTop: 12, marginBottom: 10, fontSize: 18 }}>
-                Launch Scope for SafaayiCo
-              </h2>
-              <ul
-                style={{
-                  paddingLeft: 18,
-                  margin: 0,
-                  fontSize: 13,
-                  lineHeight: 1.7,
-                  color: "#e5e7eb",
-                }}
-              >
-                <li>
-                  <strong>Paper & Hygiene</strong>: facial tissues, kitchen
-                  rolls, paper towels, basic wet wipes.
-                </li>
-                <li>
-                  <strong>Home Utility</strong>: garbage bags, trash liners,
-                  zip-lock & food storage bags, foil, cling wrap.
-                </li>
-                <li>
-                  <strong>Office & School</strong>: notebooks, copy paper, pens,
-                  markers, sticky notes.
-                </li>
-                <li>
-                  <strong>Household Essentials</strong>: disposable gloves,
-                  cleaning cloths, small bins, plastic organizers.
-                </li>
-              </ul>
-              <p
-                style={{
-                  marginTop: 10,
-                  fontSize: 12,
-                  color: "#9ca3af",
-                }}
-              >
-                Excluded now and in future: skincare, haircare, cosmetics,
-                medicinal items, food or anything with health or life risk.
-              </p>
-            </aside>
-          </section>
-
-          {/* FEATURED PRODUCTS */}
-          <section id="products" style={productSection}>
-            <div style={sectionTitleRow}>
-              <h2 style={sectionTitle}>Featured SafaayiCo Essentials</h2>
-              <button style={secondaryBtn} onClick={handleWhatsApp}>
-                Get full price list
-              </button>
-            </div>
-            <p style={sectionSub}>
-              Discover handpicked consumables that families and offices in
-              Karachi buy every month. Start lean, repeat fast.
-            </p>
-
-            <div style={productGrid}>
-              {/* Product 1 */}
-              <article style={card}>
-                <div style={cardBadgeRow}>
-                  <span style={tagBadge}>Bestseller</span>
-                  <span style={labelBadge}>Paper & Hygiene</span>
-                </div>
-                <h3 style={cardTitle}>Premium Facial Tissues (Box)</h3>
-                <p style={cardText}>
-                  Soft, strong tissue boxes ideal for living rooms, offices and
-                  cafés. Clean, neutral packaging that fits anywhere.
-                </p>
-                <div style={priceRow}>
-                  <span style={price}>Rs 170</span>
-                  <span style={oldPrice}>Rs 199</span>
-                </div>
-                <div style={tagRow}>
-                  <span style={pill}>150 sheets</span>
-                  <span style={pill}>Soft & strong</span>
-                  <span style={pill}>High repeat usage</span>
-                </div>
-                <div style={cardButtons}>
-                  <button style={smallPrimary} onClick={handleWhatsApp}>
-                    Order on WhatsApp
-                  </button>
-                  <button style={smallGhost} onClick={scrollToContact}>
-                    Ask for bulk pricing
-                  </button>
-                </div>
-              </article>
-
-              {/* Product 2 */}
-              <article style={card}>
-                <div style={cardBadgeRow}>
-                  <span style={tagBadge}>Family Pack</span>
-                  <span style={labelBadge}>Home Utility</span>
-                </div>
-                <h3 style={cardTitle}>Heavy-Duty Garbage Bag Rolls</h3>
-                <p style={cardText}>
-                  Small, medium and large trash bags for homes and apartments.
-                  Leak-resistant and strong enough for Karachi households.
-                </p>
-                <div style={priceRow}>
-                  <span style={price}>Rs 280–420</span>
-                  <span style={oldPrice}>Rs 320–480</span>
-                </div>
-                <div style={tagRow}>
-                  <span style={pill}>S / M / L sizes</span>
-                  <span style={pill}>Thick material</span>
-                  <span style={pill}>Kitchen & society use</span>
-                </div>
-                <div style={cardButtons}>
-                  <button style={smallPrimary} onClick={handleWhatsApp}>
-                    Order on WhatsApp
-                  </button>
-                  <button style={smallGhost} onClick={scrollToContact}>
-                    Add to monthly bundle
-                  </button>
-                </div>
-              </article>
-
-              {/* Product 3 */}
-              <article style={card}>
-                <div style={cardBadgeRow}>
-                  <span style={tagBadge}>New</span>
-                  <span style={labelBadge}>Storage</span>
-                </div>
-                <h3 style={cardTitle}>Zip-Lock Food & Storage Bags</h3>
-                <p style={cardText}>
-                  Resealable, food-safe bags for snacks, school lunch, spices
-                  and small items. Perfect for parents and small offices.
-                </p>
-                <div style={priceRow}>
-                  <span style={price}>Rs 260–320</span>
-                </div>
-                <div style={tagRow}>
-                  <span style={pill}>20–30 pcs pack</span>
-                  <span style={pill}>Food-safe</span>
-                  <span style={pill}>Kitchen & travel</span>
-                </div>
-                <div style={cardButtons}>
-                  <button style={smallPrimary} onClick={handleWhatsApp}>
-                    Order on WhatsApp
-                  </button>
-                  <button style={smallGhost} onClick={scrollToContact}>
-                    View combo deals
-                  </button>
-                </div>
-              </article>
-
-              {/* Product 4 */}
-              <article style={card}>
-                <div style={cardBadgeRow}>
-                  <span style={tagBadge}>Starter</span>
-                  <span style={labelBadge}>Household Essentials</span>
-                </div>
-                <h3 style={cardTitle}>Microfiber Cleaning Cloth Pack</h3>
-                <p style={cardText}>
-                  Reusable microfiber cloths for dusting, kitchen counters and
-                  glass. Less waste compared to disposable wipes.
-                </p>
-                <div style={priceRow}>
-                  <span style={price}>Rs 220–280</span>
-                </div>
-                <div style={tagRow}>
-                  <span style={pill}>Pack of 3–5</span>
-                  <span style={pill}>Machine washable</span>
-                  <span style={pill}>Home & office</span>
-                </div>
-                <div style={cardButtons}>
-                  <button style={smallPrimary} onClick={handleWhatsApp}>
-                    Order on WhatsApp
-                  </button>
-                  <button style={smallGhost} onClick={scrollToContact}>
-                    Bundle with tissues
-                  </button>
-                </div>
-              </article>
-            </div>
-
-            <p style={infoStrip}>
-              All products above are part of the locked future scope for
-              SafaayiCo. Actual pricing and SKUs will be finalized when the
-              brand is launched after QuantumTech and StudiesMate are stable.
-            </p>
-          </section>
-
-          {/* CONTACT */}
-          <section id="contact" style={{ marginTop: 32 }}>
-            <h2 style={sectionTitle}>Contact & Launch Plan</h2>
-            <p style={sectionSub}>
-              SafaayiCo is designed as a calm, low-risk consumables brand for
-              later. Use this site as a planning base for suppliers, packaging
-              and bundles.
-            </p>
-            <div
-              style={{
-                backgroundColor: "#020617",
-                borderRadius: 14,
-                border: "1px solid rgba(37,99,235,0.6)",
-                padding: 18,
-                fontSize: 13,
-                color: "#e5e7eb",
-              }}
-            >
-              <ul
-                style={{
-                  margin: 0,
-                  paddingLeft: 18,
-                  lineHeight: 1.7,
-                }}
-              >
-                <li>Lock 3–5 main SKUs for launch (tissues, bags, zip-locks).</li>
-                <li>
-                  Finalize packaging and suppliers while QuantumTech & StudiesMate
-                  grow.
-                </li>
-                <li>
-                  Launch on Daraz / WhatsApp first, then slowly add retail and
-                  office supply partners in Karachi.
-                </li>
-              </ul>
-
-              <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
-                <button style={primaryBtn} onClick={handleWhatsApp}>
-                  Chat on WhatsApp
-                </button>
-                <button
-                  style={secondaryBtn}
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                >
-                  Back to top
-                </button>
-              </div>
-            </div>
-          </section>
-        </main>
+        {/* ACTIVE PAGE */}
+        {renderPage()}
 
         {/* FOOTER */}
         <footer style={footer}>
@@ -630,7 +815,7 @@ const App = () => {
             © {new Date().getFullYear()} SafaayiCo · Future consumables brand
             concept for Karachi.
           </span>
-          <span>Built as a planning site while QuantumTech & StudiesMate scale.</span>
+          <span>Built while QuantumTech & StudiesMate scale.</span>
         </footer>
       </div>
     </div>
